@@ -33,6 +33,7 @@
 .user {
   height: 60px;
   border-bottom: solid 1px black;
+  padding-left: 5px;
 }
 
 .user p {
@@ -41,6 +42,7 @@
 
 .number {
   height: 60px;
+  padding-left: 5px;
 }
 
 .number p {
