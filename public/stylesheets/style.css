@@ -106,3 +106,14 @@
 .footer p {
   line-height: 40px;
 }
+
+/* for post */
+.imp-form {
+  padding: 10px 20px;
+  margin-bottom: 8px;
+}
+
+.imp-form p {
+  margin-bottom: 0;
+  margin-top: 15px;
+}

@@ -16,7 +16,6 @@ router.get('/', (req, res, next) => {
 		]
 	})
 	.then((imps) => {
-//		console.log(imps);
 		const data = {
 			title: 'The Books',
 			contents: imps
@@ -27,7 +26,6 @@ router.get('/', (req, res, next) => {
 	.catch((err) => {
 		console.log(err);
 	});
-//	res.render('top', {title: 'top'});
 });
 
 module.exports = router;
