@@ -1,4 +1,0 @@
-this is test file.
-For git studying.
-text added.
-test sample.
