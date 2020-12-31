@@ -19,8 +19,7 @@ router.get('/', (req, res, next) => {
 		const data = {
 			title: 'The Books',
 			contents: imps
-		}
-		console.log(data.contents);
+		};
 		res.render('top', data);
 	})
 	.catch((err) => {
