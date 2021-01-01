@@ -7,7 +7,7 @@ router.get('/', (req, res, next) => {
 		include: [
 			{
 				model: db.user,
-				required: true
+				required: false
 			},
 			{
 				model: db.book,

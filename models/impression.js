@@ -23,16 +23,26 @@ module.exports = (sequelize, DataTypes) => {
     title: {
       type: DataTypes.TEXT,
       allowNull: false,
-      field:'title'
+      field:'title',
+      validate: {
+        notEmpty: {
+          msg: "感想のタイトルを入力してください。"
+        }
+      }
     },
     impression: {
       type: DataTypes.TEXT,
       allowNull: false,
-      field:'impression'
+      field:'impression',
+      validate: {
+        notEmpty: {
+          msg: "感想を入力してください。"
+        }
+      }
     },
     user_id: {
       type: DataTypes.INTEGER,
-      allowNull: false,
+      allowNull: true,
       field:'user_id'
     },
     book_id: {
@@ -43,7 +53,12 @@ module.exports = (sequelize, DataTypes) => {
     genre: {
       type: DataTypes.TEXT,
       allowNull: false,
-      field:'genre'
+      field:'genre',
+      validate: {
+        notEmpty: {
+          msg: "ジャンルを選択してください。"
+        }
+      }
     }
   }, {
     sequelize,

@@ -20,12 +20,22 @@ module.exports = (sequelize, DataTypes) => {
     book_name: {
       type: DataTypes.TEXT,
       allowNull:false,
-      field:'book_name'
+      field:'book_name',
+      validate: {
+        notEmpty: {
+          msg: "本のタイトルを入力してください。"
+        }
+      }
     },
     author: {
       type: DataTypes.TEXT,
       allowNull:false,
-      field:'author'
+      field:'author',
+      validate: {
+        notEmpty: {
+          msg: "著者を入力してください。"
+        }
+      }
     },
     isbn: {
       type: DataTypes.INTEGER,
@@ -35,7 +45,12 @@ module.exports = (sequelize, DataTypes) => {
     book_path: {
       type: DataTypes.STRING,
       allowNull:true,
-      field:'book_path'
+      field:'book_path',
+      validate: {
+        notEmpty: {
+          msg: "本の画像をアップロードしてください。"
+        }
+      }
     }
   }, {
     sequelize,

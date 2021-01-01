@@ -10,7 +10,7 @@
   </head>
   <body>
     <div class="d-flex flex-column flex-md-row align-items-center p-3 md-4 mb-3 bg-light border-bottom shadow-sm">
-      <h1 class="my-0 mr-md-auto font-weight-normal">The Books <i class="fas fa-book"></i></h1>
+      <a href="/" class="head link my-0 mr-md-auto font-weight-normal">The Books <i class="fas fa-book"></i></a>
       <div class="login">
         <a class="btn btn-outline-secondary" href="#">新規登録</a>
         <a class="ml-3 btn btn-outline-primary" href="#">ログイン</a>
@@ -52,7 +52,13 @@
                         <p class="imp-title"><%= contents[i].title %></p>
                         <% const date = new Date(contents[i].updatedAt); %>
                         <% const str =`${date.getFullYear()}年${date.getMonth()}月${date.getDate()}日`; %>
-                        <p class="info">投稿者：<%= contents[i].user.user_name %>　ジャンル：<%= contents[i].genre %>　投稿日：<%= str %></p>
+                        <p class="info">投稿者：
+                          <% if (contents[i].user) { %> 
+                          <%= contents[i].user.user_name %>
+                          <% } else { %>
+                          名無し
+                          <% } %>
+                          　ジャンル：<%= contents[i].genre %>　投稿日：<%= str %></p>
                       </div>
                     </div>
                   </div>
