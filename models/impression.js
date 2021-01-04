@@ -55,8 +55,10 @@ module.exports = (sequelize, DataTypes) => {
       allowNull: false,
       field:'genre',
       validate: {
-        notEmpty: {
-          msg: "ジャンルを選択してください。"
+        isNotSelected(value) {
+          if(value === 'notSelected') {
+            throw new Error('ジャンルを選択してください。');
+          }
         }
       }
     }

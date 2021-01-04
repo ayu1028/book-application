@@ -1,1 +1,10 @@
-test
+https://the-books-application.herokuapp.com/
+https://git.heroku.com/the-books-application.git
+
+
+command :heroku addons:create cleardb:ignite -a [application name] 
+    //database create
+    
+command :heroku config -a [application name]
+CLEARDB_DATABASE_URL: 
+mysql://bdff3190d6f4a8:cf3e75c1@us-cdbr-east-02.cleardb.com/heroku_d8d8646e23ed391?reconnect=true

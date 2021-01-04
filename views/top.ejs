@@ -51,12 +51,12 @@
                       <div class="imp-container p-1">
                         <p class="imp-title"><%= contents[i].title %></p>
                         <% const date = new Date(contents[i].updatedAt); %>
-                        <% const str =`${date.getFullYear()}年${date.getMonth()}月${date.getDate()}日`; %>
+                        <% const str =`${date.getFullYear()}年${date.getMonth() + 1}月${date.getDate()}日`; %>
                         <p class="info">投稿者：
                           <% if (contents[i].user) { %> 
                           <%= contents[i].user.user_name %>
                           <% } else { %>
-                          名無し
+                          Guest
                           <% } %>
                           　ジャンル：<%= contents[i].genre %>　投稿日：<%= str %></p>
                       </div>
