@@ -21,7 +21,7 @@ router.get('/', (req, res, next) => {
 	};
 	res.render('post', data);
 });
-//変更後のポストルータ
+
 router.post('/create', upload.single('book_img'), (req, res, next) => {
 	const filePath = req.file ? req.file.path : null;
 	const cloud = cloudinary.uploader.upload(filePath, async(err, results) => {
@@ -51,7 +51,6 @@ router.post('/create', upload.single('book_img'), (req, res, next) => {
 				title: 'The Books',
 				err: err
 			};
-			console.log(data.err);
 			res.render('post', data);
 		}
 	});
