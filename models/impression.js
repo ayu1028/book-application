@@ -40,16 +40,6 @@ module.exports = (sequelize, DataTypes) => {
         }
       }
     },
-    user_id: {
-      type: DataTypes.INTEGER,
-      allowNull: true,
-      field:'user_id'
-    },
-    book_id: {
-      type: DataTypes.INTEGER,
-      allowNull: false,
-      field:'book_id'
-    },
     genre: {
       type: DataTypes.TEXT,
       allowNull: false,
@@ -61,6 +51,22 @@ module.exports = (sequelize, DataTypes) => {
           }
         }
       }
+    },
+    visible: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+      field: 'visible',
+      defaultValue: 1
+    },
+    user_id: {
+      type: DataTypes.INTEGER,
+      allowNull: true,
+      field:'user_id'
+    },
+    book_id: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+      field:'book_id'
     }
   }, {
     sequelize,

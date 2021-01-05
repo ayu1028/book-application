@@ -22,6 +22,7 @@ router.get('/', async (req, res, next) => {
 		title: 'The Books',
 		contents: impsAll
 	};
+	console.log(res.locals.number);
 	res.render('top', data);
 });
 

@@ -23,24 +23,33 @@ router.get('/', (req, res, next) => {
 });
 
 router.post('/create', upload.single('book_img'), (req, res, next) => {
+	const userId = req.session.user_id ? req.session.user_id : 0;
+	const bookName = req.body.book_name;
+	const author = req.body.author;
+	const title = req.body.title;
+	const impressionText = req.body.impression;
+	const genre = req.body.genre;
 	const filePath = req.file ? req.file.path : null;
+
 	const cloud = cloudinary.uploader.upload(filePath, async(err, results) => {
 		const noImage = 'https://res.cloudinary.com/dtmue1o4b/image/upload/v1609480442/l_e_others_500_ifonin.png';
 		const imagePath = results ? results.url : noImage;
+
 		await db.sequelize.sync();
 		let trn = await db.sequelize.transaction();
 		try {
 			const bookForm = {
-				book_name: req.body.book_name,
-				author: req.body.author,
+				book_name: bookName,
+				author: author,
 				book_path: imagePath
 			};
 			const book = await db.book.create(bookForm, {transaction: trn});
 			const impForm = {
-				title: req.body.title,
-				impression: req.body.impression,
+				title: title,
+				impression: impressionText,
+				user_id: userId,
 				book_id: book.id,
-				genre: req.body.genre
+				genre: genre
 			};
 			const impression = await db.impression.create(impForm, {transaction: trn});
 			await trn.commit();
@@ -51,6 +60,7 @@ router.post('/create', upload.single('book_img'), (req, res, next) => {
 				title: 'The Books',
 				err: err
 			};
+			console.log(err);
 			res.render('post', data);
 		}
 	});

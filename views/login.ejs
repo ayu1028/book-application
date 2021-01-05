@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+ <meta name="description" content="BasicAuth">
+    <meta name="author" content="siddub">
+  <title>ログイン</title>
+  <link rel='stylesheet' href='/stylesheets/style.css'>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+<body>
+  <div class="login-box">
+    <form class="login-form" method="post" action="/login">
+      <h2 class="form-heading">Login</h2>
+      <div id="errorMessage">
+        <ul>
+          <% if(typeof incorrect !== 'undefined') { %>
+            <li><%= incorrect %></li>
+          <% } %>
+          <% if(typeof err !== 'undefined') { for(let i in err.errors) { %>
+            <li><%= err.errors[i].message %></li>
+          <% }} %> 
+        </ul>
+      </div>
+      <input name="email" type="text" class="form-control" placeholder="Email" autofocus="true">
+      <input name="password" type="password" class="form-control" placeholder="Password">
+      <button id="js-submit" class="btn btn-lg btn-primary btn-block" type="submit">Login</button>
+      <div style="align-text:center;margin-bottom:10px;margin-top:15px">アカウントを持っていませんか？＞<a href='/register'>新規登録</a></div>
+    </form>
+</div>
+<!-- /container -->
+<script src="./javascripts/test2.js"></script>
+</body>
+</html>

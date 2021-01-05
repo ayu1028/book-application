@@ -140,3 +140,15 @@ body {
   font-size: 30px;
   text-decoration: underline;
 }
+
+/* for login/register */
+.login-box form input{
+  margin-bottom: 15px;
+}
+.login-box form h2{
+  text-align: center
+}
+.login-box {
+  margin: auto;
+  width:50%
+}

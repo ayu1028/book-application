@@ -12,8 +12,12 @@
     <div class="d-flex flex-column flex-md-row align-items-center p-3 md-4 mb-3 bg-light border-bottom shadow-sm">
       <a href="/" class="head link my-0 mr-md-auto font-weight-normal">The Books <i class="fas fa-book"></i></a>
       <div class="login">
-        <a class="btn btn-outline-secondary" href="#">新規登録</a>
-        <a class="ml-3 btn btn-outline-primary" href="#">ログイン</a>
+        <% if(typeof user !== 'undefined') { %>
+        <a class="btn btn-outline-secondary" href="/logout">ログアウト</a>
+        <% } else { %>
+        <a class="btn btn-outline-secondary" href="/register">新規登録</a>
+        <a class="ml-3 btn btn-outline-primary" href="/login">ログイン</a>
+        <% } %>
       </div>
     </div>
     <div class="container">
@@ -25,17 +29,25 @@
             </div>
             <div class="col p-0 user-info">
               <div class="user">
-                <p>Guest さん</p>
+                <p>
+                  <% if(typeof user !== 'undefined') { %> 
+                  <%= user.user_name %>　さん
+                  <% } else { %>
+                  Guest　さん
+                  <% } %>
+                </p>
               </div>
               <div class="number">
-                <p>投稿数：？？？</p>
+                <p>投稿数：<% if(typeof number !== 'undefined') { %><%= number %><% } %></p>
               </div>
             </div>
           </a>
+          <% if(typeof user !== 'undefined') { %>
           <a class="btn mt-3 btn-outline-primary" href="/post">投稿する</a>
+          <% } %>
         </div>
         <div class="col-lg-8 col-md-7">
-          <div class="choose">
+          <div class="mt-3 choose">
             <div>
               <p class="m-0">ジャンル：</p>
           </div>

@@ -5,11 +5,18 @@ var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 
+const session = require('express-session');
+
 //var indexRouter = require('./routes/index');
 //var usersRouter = require('./routes/users');
 const topRouter = require('./routes/top');
 const postRouter = require('./routes/post');
 const impRouter = require('./routes/impression');
+const loginRouter = require('./routes/login');
+const registerRouter = require('./routes/register');
+const logoutRouter = require('./routes/logout');
+
+const setUser = require('./setUser');
 
 var app = express();
 
@@ -23,12 +30,20 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
+app.use(session({
+	secret: 'keyboard cat',
+	resave: false,
+	saveUninitialized: true,
+	cookie: { maxAge: 60 * 60 * 1000 }
+}));
+
 //Routers
-app.use('/', topRouter);
-app.use('/post', postRouter);
-app.use('/impression', impRouter);
-//app.use('/top', topRouter);
-//app.use('/users', usersRouter);
+app.use('/', setUser, topRouter);
+app.use('/post', setUser, postRouter);
+app.use('/impression', setUser, impRouter);
+app.use('/login', loginRouter);
+app.use('/register', registerRouter);
+app.use('/logout', logoutRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

@@ -38,19 +38,15 @@ module.exports = (sequelize, DataTypes) => {
       }
     },
     isbn: {
-      type: DataTypes.INTEGER,
-      allowNull:true,
+      type: DataTypes.STRING,
+      allowNull:false,
+      defaultValue: '0000000000000',
       field:'isbn'
     },
     book_path: {
       type: DataTypes.STRING,
       allowNull:true,
-      field:'book_path',
-      validate: {
-        notEmpty: {
-          msg: "本の画像をアップロードしてください。"
-        }
-      }
+      field:'book_path'
     }
   }, {
     sequelize,

@@ -20,21 +20,36 @@ module.exports = (sequelize, DataTypes) => {
     user_name: {
       type: DataTypes.STRING,
       allowNull: false,
-      field: 'user_name'
+      field: 'user_name',
+      validate: {
+        notEmpty: {
+          msg: "名前を入力してください。"
+        }
+      }
     },
     email: {
       type: DataTypes.STRING,
       allowNull: false,
-      field: 'email'
+      field: 'email',
+      validate: {
+        notEmpty: {
+          msg: "メールアドレスを入力してください。"
+        }
+      }
     },
     password: {
       type: DataTypes.STRING,
       allowNull: false,
-      field: 'password'
+      field: 'password',
+      validate: {
+        notEmpty: {
+          msg: "パスワードを入力してください。"
+        }
+      }
     },
     user_path: {
       type: DataTypes.STRING,
-      allowNull: false,
+      allowNull: true,
       field: 'user_path'
     }
   }, {
