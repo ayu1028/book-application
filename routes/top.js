@@ -2,29 +2,27 @@ const express = require('express');
 const router = express.Router();
 const db = require('../models/index');
 
-router.get('/', (req, res, next) => {
-	db.impression.findAll({
+router.get('/', async (req, res, next) => {
+	const findForm = req.query.genre ?
+	{
+		where: {genre: req.query.genre},
 		include: [
-			{
-				model: db.user,
-				required: false
-			},
-			{
-				model: db.book,
-				required: true
-			}
+			{ model: db.user, required: false },
+			{ model: db.book, required: true }
 		]
-	})
-	.then((imps) => {
-		const data = {
-			title: 'The Books',
-			contents: imps
-		};
-		res.render('top', data);
-	})
-	.catch((err) => {
-		console.log(err);
-	});
+	} :
+	 {
+		include: [
+			{ model: db.user, required: false },
+			{ model: db.book, required: true }
+		]
+	};
+	const impsAll = await db.impression.findAll(findForm);
+	const data = {
+		title: 'The Books',
+		contents: impsAll
+	};
+	res.render('top', data);
 });
 
 module.exports = router;

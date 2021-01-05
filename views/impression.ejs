@@ -35,58 +35,37 @@
         </div>
         <div class="col-lg-8 col-md-7">
           <div class="row content-container mt-3 mb-3">
-            <form action="/post/create" method="post" enctype="multipart/form-data" class="imp-form">
-              <h1>感想を投稿する</h1>
+            <div class="imp-form">
+              <h1><%= contents.title %></h1>
               <ul>
                 <li>
                   <div>
-                    <p>本のタイトル:</p>
-                    <input type="text" name="book_name"> 
+                    <p>本のタイトル:<%= contents.book.book_name %></p>
                   </div>
                 </li>
                 <li>
                   <div>
-                    <p>著者：</p>
-                    <input type="text" name="author">
+                    <p>著者：<%= contents.book.author %></p>
+                  </div>
+                </li>
+                <li>
+                  <div class="image-container">
+                    <img class="book-img" src="<%= contents.book.book_path %>">
                   </div>
                 </li>
                 <li>
                   <div>
-                    <p>本の画像：</p>
-                    <input type="file" name="book_img">
-                  </div>
-                </li>
-                <li>
-                  <div>
-                    <p>ジャンル：</p>
-                    <select name="genre">
-                      <option value="notSelected">リストから選択</option>
-                      <option value="ラノベ">ラノベ</option>
-                      <option value="小説">小説</option>
-                      <option value="自己啓発">自己啓発</option>
-                      <option value="SF">SF</option>
-                      <option value="政治・経済">政治・経済</option>
-                      <option value="マンガ">マンガ</option>
-                      <option value="趣味">趣味</option>
-                      <option value="ミステリー">ミステリー</option>
-                    </select>
-                  </div>
-                </li>
-                <li>
-                  <div>
-                    <p>感想のタイトル：</p>
-                    <input type="text" name="title">
+                    <p>ジャンル：<%= contents.genre %></p>
                   </div>
                 </li>
                 <li>
                   <div>
                     <p>感想：</p>
-                    <textarea name="impression" style="height: 200px; width: 300px;"></textarea>
+                    <div><p><%= contents.impression %></p></div>
                   </div>
                 </li>
               </ul>
-              <input class="btn btn-secondary" type="submit" value="投稿する">
-            </form>
+            </div>
           </div>
         </div>
       </div>

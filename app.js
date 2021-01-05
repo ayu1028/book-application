@@ -5,10 +5,11 @@ var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 
-var indexRouter = require('./routes/index');
-var usersRouter = require('./routes/users');
+//var indexRouter = require('./routes/index');
+//var usersRouter = require('./routes/users');
 const topRouter = require('./routes/top');
 const postRouter = require('./routes/post');
+const impRouter = require('./routes/impression');
 
 var app = express();
 
@@ -25,6 +26,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 //Routers
 app.use('/', topRouter);
 app.use('/post', postRouter);
+app.use('/impression', impRouter);
 //app.use('/top', topRouter);
 //app.use('/users', usersRouter);
 

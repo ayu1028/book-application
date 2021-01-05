@@ -17,45 +17,31 @@
       </div>
     </div>
     <div class="container">
+      <div class="row pankuzu">
+        <a href="/">Home</a><span>＞</span>
+      </div>
       <div class="row">
         <div class="col-lg-4 col-md-5">
-          <a href="#" class="row user-name ml-1 mr-1 mt-3 link">
+          <a href="" class="row user-name ml-1 mr-1 mt-3 link">
             <div class="p-2">
               <img class="user-image" src="https://res.cloudinary.com/dtmue1o4b/image/upload/v1605691025/qkormwwrjv8anyrwzy1b.jpg">
             </div>
             <div class="col p-0 user-info">
               <div class="user">
-                <p>Guest さん</p>
+                <p>User Name：Guest</p>
               </div>
               <div class="number">
                 <p>投稿数：？？？</p>
               </div>
             </div>
           </a>
-          <a class="btn mt-3 btn-outline-primary" href="/post">投稿する</a>
+          <a class="mt-3 btn btn-outline-primary" href="/post">投稿する</a>
         </div>
         <div class="col-lg-8 col-md-7">
-          <div class="choose">
-            <div>
-              <p class="m-0">ジャンル：</p>
-          </div>
-            <select id="js-genre" name="genre">
-              <option value="">すべて</option>
-              <option value="ラノベ">ラノベ</option>
-              <option value="小説">小説</option>
-              <option value="自己啓発">自己啓発</option>
-              <option value="SF">SF</option>
-              <option value="政治・経済">政治・経済</ option>
-              <option value="マンガ">マンガ</option>
-              <option value="趣味">趣味</option>
-              <option value="ミステリー">ミステリー</ option>
-            </select>
-            <a class="ml-2 btn btn-secondary" href="/"  id="js-link">選択</a>
-          </div>
           <ul>
             <% for(let i in contents) { %>
               <li>
-                <a href="/impression/<%= contents[i].id %>" class="link">
+                <a href="#" class="link">
                   <div class="row content-container mt-3">
                     <div class="col-3 image-container">
                       <img class="book-img" src="<%= contents[i].book.book_path %>">
@@ -87,8 +73,9 @@
       </div>
     </div>
     <footer class="footer">
+      <div class="container">
         <p class="text-muted text-center"><a href="https://github.com/ayu1028/book-application">Ayumi Yamamori</a> all rights reserved</p>
+      </div>
     </footer>
-    <script src="./javascripts/test.js"></script>
   </body>
 </html>
