@@ -125,6 +125,10 @@ body {
   line-height: 40px;
 }
 
+.impression-text {
+  white-space: pre-wrap;
+}
+
 /* for post */
 .imp-form {
   padding: 10px 20px;

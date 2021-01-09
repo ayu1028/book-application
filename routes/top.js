@@ -1,17 +1,14 @@
 const express = require('express');
 const router = express.Router();
 const db = require('../models/index');
+const Op = db.Sequelize.Op;
 
 router.get('/', async (req, res, next) => {
-	const findForm = req.query.genre ?
-	{
-		where: {genre: req.query.genre},
-		include: [
-			{ model: db.user, required: false },
-			{ model: db.book, required: true }
-		]
-	} :
-	 {
+	const whereForm = req.query.genre ? 
+	{[Op.and]: [{genre: req.query.genre},{visible: 1}]} : {visible: 1};
+	const findForm = {
+		order: [['createdAt', 'DESC']],
+		where: whereForm,
 		include: [
 			{ model: db.user, required: false },
 			{ model: db.book, required: true }
