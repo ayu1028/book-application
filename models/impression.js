@@ -11,10 +11,10 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
-      impression.belongsTo(models.user, {
+      this.belongsTo(models.user, {
         foreignKey: 'user_id'
       });
-      impression.belongsTo(models.book, {
+      this.belongsTo(models.book, {
         foreignKey: 'book_id'
       });
     }

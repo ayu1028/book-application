@@ -8,13 +8,13 @@ var logger = require('morgan');
 const session = require('express-session');
 
 //var indexRouter = require('./routes/index');
-//var usersRouter = require('./routes/users');
 const topRouter = require('./routes/top');
 const postRouter = require('./routes/post');
 const impRouter = require('./routes/impression');
 const loginRouter = require('./routes/login');
 const registerRouter = require('./routes/register');
 const logoutRouter = require('./routes/logout');
+const usersRouter = require('./routes/users');
 
 const setUser = require('./setUser');
 
@@ -41,6 +41,7 @@ app.use(session({
 app.use('/', setUser, topRouter);
 app.use('/post', setUser, postRouter);
 app.use('/impression', setUser, impRouter);
+app.use('/users', setUser, usersRouter);
 app.use('/login', loginRouter);
 app.use('/register', registerRouter);
 app.use('/logout', logoutRouter);

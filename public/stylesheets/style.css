@@ -57,12 +57,12 @@ body {
 }
 
 .number {
-  height: 60px;
+  height: 30px;
   padding-left: 5px;
 }
 
 .number p {
-  line-height: 60px;
+  line-height: 30px;
 }
 
 .user-name {

@@ -7,7 +7,7 @@ router.get('/', async (req, res, next) => {
 	const whereForm = req.query.genre ? 
 	{[Op.and]: [{genre: req.query.genre},{visible: 1}]} : {visible: 1};
 	const findForm = {
-		order: [['createdAt', 'DESC']],
+		order: [['updatedAt', 'DESC']],
 		where: whereForm,
 		include: [
 			{ model: db.user, required: false },
