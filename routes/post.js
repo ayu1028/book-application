@@ -31,7 +31,7 @@ router.post('/create', upload.single('book_img'), (req, res, next) => {
 	const genre = req.body.genre;
 	const filePath = req.file ? req.file.path : null;
 
-	const cloud = cloudinary.uploader.upload(filePath, async(err, results) => {
+	cloudinary.uploader.upload(filePath, async(err, results) => {
 		const noImage = 'https://res.cloudinary.com/dtmue1o4b/image/upload/v1609480442/l_e_others_500_ifonin.png';
 		const imagePath = results ? results.url : noImage;
 

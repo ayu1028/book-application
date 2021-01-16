@@ -58,10 +58,20 @@
               </div>
             </div>
           <% } %>
+          <div class="row user-name ml-1 mr-1 mt-3">
+            <div class="mt-2 ml-3">
+              <p>ジャンル別投稿数</p>
+              <ul>
+                <% for(let i in number) { %> 
+                <li><a href="/users/<%= user.id %>/?genre=<%= number[i].genre %>"><%= number[i].genre %> ： <%= number[i].dataValues.n_genre %></a></li>
+                <% } %>
+              </ul>
+            </div>
+          </div>
           <a class="btn mt-3 btn-outline-primary" href="/post">投稿する</a>
         </div>
         <div class="col-lg-8 col-md-7">
-          <div class="mt-3 choose">
+<!--          <div class="mt-3 choose">
             <div>
               <p class="m-0">ジャンル：</p>
           </div>
@@ -76,12 +86,12 @@
               <option value="趣味">趣味</option>
               <option value="ミステリー">ミステリー</ option>
             </select>
-            <a class="ml-2 btn btn-secondary" href="/"  id="js-link">選択</a>
-          </div>
+            <a class="ml-2 btn btn-secondary" href="/users/<%= user.id %>/"  id="js-link">選択</a>
+          </div>-->
           <ul>
             <% for(let i in contents) { %>
               <li>
-                <a href="/impression/<%= contents[i].id %>" class="link">
+                <a href="/users/<%= contents[i].user.id %>/<%= contents[i].id %>" class="link">
                   <div class="row content-container mt-3">
                     <div class="col-3 image-container">
                       <img class="book-img" src="<%= contents[i].book.book_path %>">

@@ -17,7 +17,6 @@ router.get('/:imp_id', async (req, res, next) => {
     title: 'The Books',
     contents: impression
   };
-//  console.log(data.contents.user.user_name);
   res.render('impression', data);
 });
 

@@ -23,25 +23,42 @@
     <div class="container">
       <div class="row">
         <div class="col-lg-4 col-md-5">
-          <a href="" class="row user-name ml-1 mr-1 mt-3 link">
-            <div class="p-2">
-              <img class="user-image" src="https://res.cloudinary.com/dtmue1o4b/image/upload/v1605691025/qkormwwrjv8anyrwzy1b.jpg">
-            </div>
-            <div class="col p-0 user-info">
-              <div class="user">
-                <p>
-                  <% if(typeof user !== 'undefined') { %> 
-                  <%= user.user_name %>　さん
-                  <% } else { %>
-                  Guest　さん
-                  <% } %>
-                </p>
+          <% if(typeof user !== 'undefined') { %>
+            <div class="row user-name ml-1 mr-1 mt-3">
+              <div class="p-2">
+                <img class="user-image" src="https://res.cloudinary.com/dtmue1o4b/image/upload/v1605691025/qkormwwrjv8anyrwzy1b.jpg">
               </div>
-              <div class="number">
-                <p>投稿数：<% if(typeof number !== 'undefined') { %><%= number %><% } %></p>
+              <div class="col p-0 user-info">
+                <div class="user">
+                  <p><%= user.user_name %>　さん</p>
+                </div>
+                <a href="/users/<%= user.id %>" class="number">
+                  <p>投稿数：
+                    <% if(typeof totalNumber !== 'undefined') { %>
+                    <%= totalNumber %>
+                    <% } else { %>
+                      0
+                    <% } %>
+                  </p>
+                </a>
               </div>
             </div>
-          </a>
+          <% } else { %> 
+            <div class="row user-name ml-1 mr-1 mt-3">
+              <div class="p-2">
+                <img class="user-image" src="https://res.cloudinary.com/dtmue1o4b/image/upload/v1605691025/qkormwwrjv8anyrwzy1b.jpg">
+              </div>
+              <div class="col p-0 user-info">
+                <div class="user">
+                  <p>Guest　さん</p>
+                </div>
+                <a href="" class="number">
+                  <p>投稿数：</p>
+                </a>
+              </div>
+            </div>
+          <% } %>
+          <a class="btn mt-3 btn-outline-primary" href="/post">投稿する</a>
         </div>
         <div class="col-lg-8 col-md-7">
           <div class="row content-container mt-3 mb-3">
