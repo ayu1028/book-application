@@ -22,13 +22,14 @@ router.get('/', (req, res, next) => {
 	res.render('post', data);
 });
 
-router.post('/create', upload.single('book_img'), (req, res, next) => {
+router.post('/', upload.single('book_img'), (req, res, next) => {
 	const userId = req.session.user_id ? req.session.user_id : 0;
 	const bookName = req.body.book_name;
 	const author = req.body.author;
 	const title = req.body.title;
 	const impressionText = req.body.impression;
 	const genre = req.body.genre;
+	const visible = req.body.visible;
 	const filePath = req.file ? req.file.path : null;
 
 	cloudinary.uploader.upload(filePath, async(err, results) => {
@@ -49,7 +50,8 @@ router.post('/create', upload.single('book_img'), (req, res, next) => {
 				impression: impressionText,
 				user_id: userId,
 				book_id: book.id,
-				genre: genre
+				genre: genre,
+				visible: visible
 			};
 			const impression = await db.impression.create(impForm, {transaction: trn});
 			await trn.commit();

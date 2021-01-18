@@ -62,53 +62,36 @@
         </div>
         <div class="col-lg-8 col-md-7">
           <div class="row content-container mt-3 mb-3">
-            <form action="/post" method="post" enctype="multipart/form-data" class="imp-form">
-              <h1>感想を投稿する</h1>
+            <form action="/update/<%= contents.id %>"  method="post" class="imp-form">
+              <h1>感想を編集</h1>
               <ul>
                 <li>
                   <div>
                     <p>本のタイトル:</p>
-                    <input type="text" name="book_name"> 
+                    <input type="text" name="book_name" value="<%= contents.book.book_name %>" disabled> 
                   </div>
                 </li>
                 <li>
                   <div>
                     <p>著者：</p>
-                    <input type="text" name="author">
+                    <input type="text" name="author" value="<%= contents.book.author %>" disabled>
                   </div>
                 </li>
                 <li>
                   <div>
-                    <p>本の画像：</p>
-                    <input type="file" name="book_img">
-                  </div>
-                </li>
-                <li>
-                  <div>
-                    <p>ジャンル：</p>
-                    <select name="genre">
-                      <option value="notSelected">リストから選択</option>
-                      <option value="ラノベ">ラノベ</option>
-                      <option value="小説">小説</option>
-                      <option value="自己啓発">自己啓発</option>
-                      <option value="SF">SF</option>
-                      <option value="政治・経済">政治・経済</option>
-                      <option value="マンガ">マンガ</option>
-                      <option value="趣味">趣味</option>
-                      <option value="ミステリー">ミステリー</option>
-                    </select>
+                    <p>ジャンル：<%= contents.genre %></p>
                   </div>
                 </li>
                 <li>
                   <div>
                     <p>感想のタイトル：</p>
-                    <input type="text" name="title">
+                    <input type="text" name="title" value="<%= contents.title %>">
                   </div>
                 </li>
                 <li>
                   <div>
                     <p>感想：</p>
-                    <textarea name="impression" style="height: 200px; width: 300px;"></textarea>
+                    <textarea name="impression" style="height: 200px; width: 300px;"><%= contents.impression %></textarea>
                   </div>
                 </li>
                 <li>
@@ -121,7 +104,12 @@
                   </div>
                 </li>
               </ul>
-              <input class="btn btn-secondary" type="submit" value="投稿する">
+              <input class="btn btn-secondary" type="submit" value="更新">
+            </form>
+          </div>
+          <div class="row">
+            <form action="/delete/<%= contents.id %>"  method="post" class="imp-form">
+              <input class="ml-5 btn btn-outline-secondary" type="submit" value="投稿を削除">
             </form>
           </div>
         </div>

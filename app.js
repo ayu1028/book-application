@@ -15,6 +15,8 @@ const loginRouter = require('./routes/login');
 const registerRouter = require('./routes/register');
 const logoutRouter = require('./routes/logout');
 const usersRouter = require('./routes/users');
+const updateRouter = require('./routes/update');
+const deleteRouter = require('./routes/delete');
 
 const setUser = require('./setUser');
 
@@ -42,6 +44,8 @@ app.use('/', setUser, topRouter);
 app.use('/post', setUser, postRouter);
 app.use('/impression', setUser, impRouter);
 app.use('/users', setUser, usersRouter);
+app.use('/update', setUser, updateRouter);
+app.use('/delete', setUser, deleteRouter);
 app.use('/login', loginRouter);
 app.use('/register', registerRouter);
 app.use('/logout', logoutRouter);

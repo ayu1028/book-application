@@ -91,7 +91,7 @@
           <ul>
             <% for(let i in contents) { %>
               <li>
-                <a href="/users/<%= contents[i].user.id %>/<%= contents[i].id %>" class="link">
+                <a href="/update/<%= contents[i].id %>" class="link">
                   <div class="row content-container mt-3">
                     <div class="col-3 image-container">
                       <img class="book-img" src="<%= contents[i].book.book_path %>">
@@ -125,6 +125,6 @@
     <footer class="footer">
         <p class="text-muted text-center"><a href="https://github.com/ayu1028/book-application">Ayumi Yamamori</a> all rights reserved</p>
     </footer>
-    <script src="./javascripts/test.js"></script>
+<!--    <script src="./javascripts/test.js"></script>-->
   </body>
 </html>
