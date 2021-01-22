@@ -20,26 +20,8 @@ router.get('/:user_id/', async (req, res, next) => {
   };
   const impsAll = await db.impression.findAll(findForm);
   res.render('users', {
-    title: 'The Books',
+    title: `User's Page`,
     contents: impsAll
-  });
-});
-
-router.get('/:user_id/impressions/:impression_id/', async (req, res, next) => {
-  const userId = req.params.user_id;
-  if(userId != req.session.user_id) {
-    res.redirect('/');
-  }
-  const impression = await db.impression.findOne({
-    where: {id: req.params.impression_id},
-    include: [
-      { model: db.user, required: false },
-      { model: db.book, required: true }
-    ]
-  });
-  res.render('impression_update', {
-    title: 'The Books',
-    contents: impression
   });
 });
 

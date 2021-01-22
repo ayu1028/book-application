@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no">
-    <title><%= title %></title>
+    <title>The Books <%= title %></title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
     <link rel='stylesheet' href='/stylesheets/style.css' />
     <script src="https://kit.fontawesome.com/f408a441a0.js" crossorigin="anonymous"></script>
@@ -23,6 +23,7 @@
     <div class="container">
       <div class="row">
         <div class="col-lg-4 col-md-5">
+          <h1><%= title %></h1>
           <% if(typeof user !== 'undefined') { %>
             <div class="row user-name ml-1 mr-1 mt-3">
               <div class="p-2">

@@ -16,7 +16,7 @@ router.get('/', async (req, res, next) => {
 	};
 	const impsAll = await db.impression.findAll(findForm);
 	const data = {
-		title: 'The Books',
+		title: 'Home',
 		contents: impsAll
 	};
 	res.render('top', data);
