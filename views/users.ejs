@@ -63,6 +63,7 @@
             <div class="mt-2 ml-3">
               <p>ジャンル別投稿数</p>
               <ul>
+                <li><a href="/users/<%= user.id %>/">すべて：<%= totalNumber %> </a></li>
                 <% for(let i in number) { %> 
                 <li><a href="/users/<%= user.id %>/?genre=<%= number[i].genre %>"><%= number[i].genre %> ： <%= number[i].dataValues.n_genre %></a></li>
                 <% } %>
