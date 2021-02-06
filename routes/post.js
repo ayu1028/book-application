@@ -58,12 +58,10 @@ router.post('/', upload.single('book_img'), (req, res, next) => {
 			res.redirect('/');
 		} catch(err) {
 			await trn.rollback();
-			const data = {
-				title: 'The Books',
-				err: err
-			};
 			console.log(err);
-			res.render('post', data);
+			res.render('post', {
+				err: err.errors
+			});
 		}
 	});
 });

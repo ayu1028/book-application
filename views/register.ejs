@@ -21,8 +21,8 @@
           <% if(typeof userExists !== 'undefined') { %>
             <li><%= userExists %></li>
           <% } %>
-          <% if(typeof err !== 'undefined') { for(let i in err.errors) { %>
-            <li><%= err.errors[i].message %></li>
+          <% if(typeof err !== 'undefined') { for(let i in err) { %>
+            <li><%= err[i].message %></li>
           <% }} %> 
         </ul>
       </div>

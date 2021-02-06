@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no">
-    <title><%= title %></title>
+    <title>感想を投稿する</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
     <link rel='stylesheet' href='/stylesheets/style.css' />
     <script src="https://kit.fontawesome.com/f408a441a0.js" crossorigin="anonymous"></script>
@@ -53,17 +53,22 @@
                   <p>Guest　さん</p>
                 </div>
                 <a href="" class="number">
-                  <p>投稿数：</p>
+                  <p>投稿数：0</p>
                 </a>
               </div>
             </div>
           <% } %>
-          <a class="btn mt-3 btn-outline-primary" href="/post">投稿する</a>
+<!--          <a class="btn mt-3 btn-outline-primary" href="/post">投稿する</a>-->
         </div>
         <div class="col-lg-8 col-md-7">
           <div class="row content-container mt-3 mb-3">
             <form action="/post" method="post" enctype="multipart/form-data" class="imp-form">
               <h1>感想を投稿する</h1>
+              <ul>
+                <% if(typeof err !== 'undefined') { for(let i in err) { %>
+                  <li><%= err[i].message %></li>
+                <% }} %>
+              </ul>
               <ul>
                 <li>
                   <div>

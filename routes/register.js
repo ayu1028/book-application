@@ -43,7 +43,7 @@ router.post('/', async (req, res, next) => {
     } catch(err) {
       await trn.rollback();
       res.render('register', {
-        err: err
+        err: err.errors
       });
     }
   }
