@@ -5,6 +5,8 @@
     <title>The Books</title>
     <link rel="stylesheet" href="style.css"/>
     <script src="https://kit.fontawesome.com/f408a441a0.js" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
   </head>
   <body>
     <div class="container">
@@ -77,48 +79,7 @@
                 </div>
               </div>
             </a>
-            <a href="#" class="book-info-box">
-              <div class="image-box">
-                <img class="book-image" src="https://res.cloudinary.com/dtmue1o4b/image/upload/v1605691025/qkormwwrjv8anyrwzy1b.jpg">
-              </div>
-              <div class="info">
-                <div class="book-name">
-                  <p>本のタイトル</p>
-                </div>
-                <div class="imp-title">
-                  <p>感想のタイトル</p>
-                  <p class="user-and-date">投稿者：Guest　投稿日：2021年2月7日</p>
-                </div>
-              </div>
-            </a>
-            <a href="#" class="book-info-box">
-              <div class="image-box">
-                <img class="book-image" src="https://res.cloudinary.com/dtmue1o4b/image/upload/v1605691025/qkormwwrjv8anyrwzy1b.jpg">
-              </div>
-              <div class="info">
-                <div class="book-name">
-                  <p>本のタイトル</p>
-                </div>
-                <div class="imp-title">
-                  <p>感想のタイトルだああああああああああああああああああああああ！！！</p>
-                  <p class="user-and-date">投稿者：Guest　投稿日：2021年2月7日</p>
-                </div>
-              </div>
-            </a>
-            <a href="#" class="book-info-box">
-              <div class="image-box">
-                <img class="book-image" src="https://res.cloudinary.com/dtmue1o4b/image/upload/v1605691025/qkormwwrjv8anyrwzy1b.jpg">
-              </div>
-              <div class="info">
-                <div class="book-name">
-                  <p>本のタイトル</p>
-                </div>
-                <div class="imp-title">
-                  <p>感想のタイトル</p>
-                  <p class="user-and-date">投稿者：Guest　投稿日：2021年2月7日</p>
-                </div>
-              </div>
-            </a>
+            <div id="app">{{ message }}</div>
           </div>
         </div>
       </div>
@@ -128,5 +89,6 @@
         </p>
       </footer>
     </div>
+    <script src="Vue.js"></script>
   </body>
 </html>

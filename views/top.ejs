@@ -6,6 +6,8 @@
     <title>The Books</title>
     <link rel="stylesheet" href='/stylesheets/style.css'>
     <script src="https://kit.fontawesome.com/f408a441a0.js" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
   </head>
   <body>
     <div class="container">
@@ -77,6 +79,13 @@
               <option value="ミステリー">ミステリー</option>
             </select>
             <button class="btn-mini" href="#">選択</button>
+            <div id="app">
+              <list-item
+                v-for="content in impressions"
+                v-bind:items="content"
+                v-bind:key="content.id"
+              ></list-item>
+            </div>
             <% for(let i in contents) { %>
               <a href="/impression/<%= contents[i].id %>" class="white-background book-info-box">
                 <div class="image-box">
@@ -114,5 +123,6 @@
         </p>
       </footer>
     </div>
+    <script src="./javascripts/vue.js"></script>
   </body>
 </html>
