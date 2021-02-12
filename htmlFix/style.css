@@ -6,6 +6,14 @@
   list-style: none;
 }
 
+a {
+  color: black;
+}
+
+a:hover {
+  color: #6360ff;
+}
+
 .container {
   min-height: 100vh;
   position: relative;
@@ -43,6 +51,10 @@
   margin-right: 5px;
   border-radius: 5px;
   font-size: 18px;
+}
+
+.btn:hover {
+  cursor: pointer;
 }
 
 .main-container {
@@ -83,6 +95,10 @@ footer{
   border-radius: 5px;
 }
 
+.white-background {
+  background-color: #ececec;
+}
+
 .bookshelf {
   width: 90%;
   margin: 20px auto;
@@ -92,7 +108,7 @@ footer{
 }
 
 li {
-  margin-bottom: 10px;
+  margin-bottom: 5px;
 }
 
 .image-box {

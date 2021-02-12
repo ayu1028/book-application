@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no">
+    <title>感想を投稿する</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+    <script src="https://kit.fontawesome.com/f408a441a0.js" crossorigin="anonymous"></script>
+  </head>
+  <body>
+    <div class="d-flex flex-column flex-md-row align-items-center p-3 md-4 mb-3 bg-light border-bottom shadow-sm">
+      <a href="/" class="head link my-0 mr-md-auto font-weight-normal">The Books <i class="fas fa-book"></i></a>
+      <div class="login">
+        <% if(typeof user !== 'undefined') { %>
+        <a class="btn btn-outline-secondary" href="/logout">ログアウト</a>
+        <% } else { %>
+        <a class="btn btn-outline-secondary" href="/register">新規登録</a>
+        <a class="ml-3 btn btn-outline-primary" href="/login">ログイン</a>
+        <% } %>
+      </div>
+    </div>
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-4 col-md-5">
+          <% if(typeof user !== 'undefined') { %>
+            <div class="row user-name ml-1 mr-1 mt-3">
+              <div class="p-2">
+                <img class="user-image" src="https://res.cloudinary.com/dtmue1o4b/image/upload/v1605691025/qkormwwrjv8anyrwzy1b.jpg">
+              </div>
+              <div class="col p-0 user-info">
+                <div class="user">
+                  <p><%= user.user_name %>　さん</p>
+                </div>
+                <a href="/users/<%= user.id %>" class="number">
+                  <p>投稿数：
+                    <% if(typeof totalNumber !== 'undefined') { %>
+                    <%= totalNumber %>
+                    <% } else { %>
+                      0
+                    <% } %>
+                  </p>
+                </a>
+              </div>
+            </div>
+          <% } else { %> 
+            <div class="row user-name ml-1 mr-1 mt-3">
+              <div class="p-2">
+                <img class="user-image" src="https://res.cloudinary.com/dtmue1o4b/image/upload/v1605691025/qkormwwrjv8anyrwzy1b.jpg">
+              </div>
+              <div class="col p-0 user-info">
+                <div class="user">
+                  <p>Guest　さん</p>
+                </div>
+                <a href="" class="number">
+                  <p>投稿数：0</p>
+                </a>
+              </div>
+            </div>
+          <% } %>
+<!--          <a class="btn mt-3 btn-outline-primary" href="/post">投稿する</a>-->
+        </div>
+        <div class="col-lg-8 col-md-7">
+          <div class="row content-container mt-3 mb-3">
+            <form action="/post" method="post" enctype="multipart/form-data" class="imp-form">
+              <h1>感想を投稿する</h1>
+              <ul>
+                <% if(typeof err !== 'undefined') { for(let i in err) { %>
+                  <li><%= err[i].message %></li>
+                <% }} %>
+              </ul>
+              <ul>
+                <li>
+                  <div>
+                    <p>本のタイトル:</p>
+                    <input type="text" name="book_name"> 
+                  </div>
+                </li>
+                <li>
+                  <div>
+                    <p>著者：</p>
+                    <input type="text" name="author">
+                  </div>
+                </li>
+                <li>
+                  <div>
+                    <p>本の画像：</p>
+                    <input type="file" name="book_img">
+                  </div>
+                </li>
+                <li>
+                  <div>
+                    <p>ジャンル：</p>
+                    <select name="genre">
+                      <option value="notSelected">リストから選択</option>
+                      <option value="ラノベ">ラノベ</option>
+                      <option value="小説">小説</option>
+                      <option value="自己啓発">自己啓発</option>
+                      <option value="SF">SF</option>
+                      <option value="政治・経済">政治・経済</option>
+                      <option value="マンガ">マンガ</option>
+                      <option value="趣味">趣味</option>
+                      <option value="ミステリー">ミステリー</option>
+                    </select>
+                  </div>
+                </li>
+                <li>
+                  <div>
+                    <p>感想のタイトル：</p>
+                    <input type="text" name="title">
+                  </div>
+                </li>
+                <li>
+                  <div>
+                    <p>感想：</p>
+                    <textarea name="impression" style="height: 200px; width: 300px;"></textarea>
+                  </div>
+                </li>
+                <li>
+                  <div>
+                    <p>公開：</p>
+                    <p>
+                      <input type="radio" name="visible" value="1" checked> 公開
+                      <input type="radio" name="visible" value="0"> 非公開
+                    </p>
+                  </div>
+                </li>
+              </ul>
+              <input class="btn btn-secondary" type="submit" value="投稿する">
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+    <footer class="footer">
+      <p class="text-muted text-center"><a href="https://github.com/ayu1028/book-application">Ayumi Yamamori</a> all rights reserved</p>
+  </footer>
+  </body>
+</html>
