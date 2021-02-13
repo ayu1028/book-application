@@ -57,14 +57,14 @@
                     <span>Guest さん</span>
                   </div>
                   <div class="info-numbers">
-                    <span>投稿数：250</span>
+                    <span>投稿数：0</span>
                   </div>
                 </div>
               </div>
             <% } %>
             <a href="/post" class="btn post">投稿する</a>
           </div>
-          <div class="contents-container">
+          <div id="app" class="contents-container">
             <p>新着記事一覧</p>
             <span>ジャンル選択：</span>
             <select id="js-genre" name="genre">
@@ -78,14 +78,8 @@
               <option value="趣味">趣味</option>
               <option value="ミステリー">ミステリー</option>
             </select>
-            <button class="btn-mini" href="#">選択</button>
-            <div id="app">
-              <list-item
-                v-for="content in impressions"
-                v-bind:items="content"
-                v-bind:key="content.id"
-              ></list-item>
-            </div>
+            <button class="btn-mini" v-on:click="impressionsAll">選択</button>
+            {{ impressions }}
             <% for(let i in contents) { %>
               <a href="/impression/<%= contents[i].id %>" class="white-background book-info-box">
                 <div class="image-box">

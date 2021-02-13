@@ -16,14 +16,23 @@
               </div>
             </a>
   `
-})
+});
 var app = new Vue({
   el:'#app',
   data:{
-    impressions: [
-      {id: 0, book_name: 'test1', title: 'impression1'},
-      {id: 1, book_name: 'test2', title: 'impression2'},
-      {id: 2, book_name: 'test3', title: 'impression3'}
-    ]
+    impressions: []
+  },
+  mounted: function() {
+    this.impressions = 'ここに検索結果が表示されます'
+  },
+  methods: {
+    async impressionsAll(genre) {
+//      const $text = document.getElementById('js-text').value;
+      const $genre = document.getElementById('js-genre').value;
+      const search = await axios.post('/search', {
+        genre: $genre
+      });
+      this.impressions = search.data;
+    }
   }
 })
