@@ -1,38 +1,65 @@
  Vue.component('list-item', {
   props: ['items'],
   template: `
-  <a href="#" class="white-background book-info-box">
-              <div class="image-box">
-                <img class="book-image" src="https://res.cloudinary.com/dtmue1o4b/image/upload/v1605691025/qkormwwrjv8anyrwzy1b.jpg">
-              </div>
-              <div class="info">
-                <div class="book-name">
-                  <p>{{ items.book_name }}</p>
+  <a v-bind:href="'/impression/' + items.id" class="white-background book-info-box">
+                <div class="image-box">
+                  <img class="book-image" v-bind:src="items.book.book_path">
                 </div>
-                <div class="imp-title">
-                  <p>{{ items.title }}</p>
-                  <p class="user-and-date">投稿者：Guest　投稿日：2021年2月7日</p>
+                <div class="info">
+                  <div class="book-name">
+                    <p>{{ items.book.book_name }}</p>
+                    <p class="user-and-date">著者：{{ items.book.author }}</p>
+                  </div>
+                  <div class="imp-title">
+                    <p>{{ items.title }}</p>
+                    <p class="user-and-date">
+                      投稿者：{{ items.user.user_name }}
+                      　ジャンル：{{ items.genre }}
+                      　投稿日：{{ items.updatedAt }}
+                    </p>
+                  </div>
                 </div>
-              </div>
-            </a>
+              </a>
   `
 });
+
+Vue.component('book-item', {
+  props: ['items'],
+  template: `
+  <a v-bind:href="'/update/' + items.id" class="image-box-large white-background">
+  <p>{{ items.book.book_name }}</p>
+  <img class="book-image-large" v-bind:src="items.book.book_path">
+</a>
+  `
+})
+
 var app = new Vue({
   el:'#app',
   data:{
-    impressions: []
+    impressions: [],
+    selected:'すべて'
   },
   mounted: function() {
-    this.impressions = 'ここに検索結果が表示されます'
+    this.impressionsAll(this.selected);
+  },
+  computed: {
+    computedImpressions: function() {
+      const originalData = this.impressions;
+      for(let index = 0; index < originalData.length; index ++) {
+        const date = new Date(originalData[index].updatedAt);
+        const str = `${date.getFullYear()}年${date.getMonth() + 1}月${date.getDate()}日`;
+        originalData[index].updatedAt = str;
+      }
+      return originalData;
+    }
   },
   methods: {
-    async impressionsAll(genre) {
-//      const $text = document.getElementById('js-text').value;
-      const $genre = document.getElementById('js-genre').value;
+    impressionsAll: async function(genre) {
+      const $genre = genre;
       const search = await axios.post('/search', {
         genre: $genre
       });
       this.impressions = search.data;
     }
   }
-})
+});

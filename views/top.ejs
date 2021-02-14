@@ -24,7 +24,7 @@
           <% } else { %>
             <a href="/register" class="btn">新規登録</a><!--未ログイン時に表示する-->
             <a href="/login" class="btn">ログイン</a>
-          <% } %> 
+          <% } %>
         </div>
       </header>
       <div class="contents">
@@ -46,6 +46,7 @@
                   </div>
                 </div>
               </a>
+              <a href="/post" class="btn post">投稿する</a>
             <% } else { %>
               <!--未ログイン時に表示する-->
               <div class="white-background user-info-box">
@@ -54,7 +55,7 @@
                 </div>
                 <div class="info">
                   <div class="info-name">
-                    <span>Guest さん</span>
+                    <span>未ログイン</span>
                   </div>
                   <div class="info-numbers">
                     <span>投稿数：0</span>
@@ -62,13 +63,12 @@
                 </div>
               </div>
             <% } %>
-            <a href="/post" class="btn post">投稿する</a>
           </div>
           <div id="app" class="contents-container">
             <p>新着記事一覧</p>
             <span>ジャンル選択：</span>
-            <select id="js-genre" name="genre">
-              <option value="">すべて</option>
+            <select id="js-genre" name="genre" v-model="selected" v-on:change="impressionsAll(selected)">
+              <option value="すべて">すべて</option>
               <option value="ラノベ">ラノベ</option>
               <option value="小説">小説</option>
               <option value="自己啓発">自己啓発</option>
@@ -78,36 +78,11 @@
               <option value="趣味">趣味</option>
               <option value="ミステリー">ミステリー</option>
             </select>
-            <button class="btn-mini" v-on:click="impressionsAll">選択</button>
-            {{ impressions }}
-            <% for(let i in contents) { %>
-              <a href="/impression/<%= contents[i].id %>" class="white-background book-info-box">
-                <div class="image-box">
-                  <img class="book-image" src="<%= contents[i].book.book_path %>">
-                </div>
-                <div class="info">
-                  <div class="book-name">
-                    <p><%= contents[i].book.book_name %></p>
-                    <p class="user-and-date">著者：<%= contents[i].book.author %></p>
-                  </div>
-                  <div class="imp-title">
-                    <p><%= contents[i].title %></p>
-                    <p class="user-and-date">
-                      <% const date = new Date(contents[i].updatedAt); %>
-                      <% const str =`${date.getFullYear()}年${date.getMonth() + 1}月${date.getDate()}日`; %>
-                      投稿者：
-                      <% if (contents[i].user) { %> 
-                        <%= contents[i].user.user_name %>
-                        <% } else { %>
-                        Guest
-                        <% } %>
-                        　ジャンル：<%= contents[i].genre %>
-                        　投稿日：<%= str %>
-                    </p>
-                  </div>
-                </div>
-              </a>
-            <% } %>
+            <list-item
+              v-for="item in computedImpressions"
+              v-bind:items="item"
+              v-bind:key="item.id"
+            ></list-item>
           </div>
         </div>
       </div>

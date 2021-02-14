@@ -4,27 +4,18 @@ const db = require('../models/index');
 const Op = db.Sequelize.Op;
 
 router.get('/', async (req, res, next) => {
-	const whereForm = req.query.genre ? 
-	{[Op.and]: [{genre: req.query.genre},{visible: 1}]} : {visible: 1};
-	const findForm = {
-		order: [['updatedAt', 'DESC']],
-		where: whereForm,
-		include: [
-			{ model: db.user, required: false },
-			{ model: db.book, required: true }
-		]
-	};
-	const impsAll = await db.impression.findAll(findForm);
-	const data = {
-		title: 'Home',
-		contents: impsAll
-	};
-	res.render('top', data);
+	res.render('top');
 });
 
 router.post('/search', async (req, res, next) => {
-	const whereForm = req.body.genre ? 
-	{[Op.and]: [{genre: req.body.genre},{visible: 1}]} : {visible: 1};
+	const formSelector = (genre) => {
+		if(genre == 'すべて') {
+			return {visible: 1};
+		} else {
+			return {[Op.and]: [{genre: req.body.genre},{visible: 1}]};
+		}
+	};
+	const whereForm = formSelector(req.body.genre);
 	const findForm = {
 		order: [['updatedAt', 'DESC']],
 		where: whereForm,

@@ -33,4 +33,23 @@ router.post('/', async (req, res, next) => {
   }
 });
 
+router.get('/easy', async (req, res, next) => {
+  const email = 'guest@guest.jp';
+  const password = 'guest';
+  const findUser = await db.user.findOne({
+    where: {
+      email: email
+    }
+  });
+  const passwordHash = findUser.password;
+  if(bcrypt.compareSync(password, passwordHash)) {
+    req.session.user_id = findUser.id;
+    res.redirect('/');
+  } else {
+    res.render('login', {
+      incorrect: "パスワードが一致しません"
+    });
+  }
+});
+
 module.exports = router;

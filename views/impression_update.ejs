@@ -46,11 +46,12 @@
               </a>
               <div class="white-background bookshelf"><!--ログイン後に表示する-->
                 <p>Your Books</p>
-                <ul>
-                  <li><a href="#">すべて：<%= totalNumber %></a></li>
-                  <li><a href="#">ラノベ：250</a></li>
-                  <li><a href="#">政治・経済：250</a></li>
-                </ul>
+                  <ul>
+                    <li><a href="#" class="btn genre-btn">すべて：<%= totalNumber %> </a></li>
+                    <% for(let i in number) { %> 
+                    <li><a href="#" class="btn genre-btn"><%= number[i].genre %> ： <%= number[i].dataValues.n_genre %></a></li>
+                    <% } %>
+                  </ul>
               </div>
             <% } else { %>
               <!--未ログイン時に表示する-->
@@ -60,10 +61,10 @@
                 </div>
                 <div class="info">
                   <div class="info-name">
-                    <span>Guest さん</span>
+                    <span>未ログイン</span>
                   </div>
                   <div class="info-numbers">
-                    <span>投稿数：250</span>
+                    <span>投稿数：0</span>
                   </div>
                 </div>
               </div>
@@ -89,7 +90,7 @@
                   </li>
                   <li>
                     <p>感想：</p>
-                    <textarea name="impression" style="height: 200px; width: 600px;"><%= contents.impression %></textarea>
+                    <textarea name="impression" class="impression-area"><%= contents.impression %></textarea>
                   </li>
                   <li>
                     <p>公開：</p>
