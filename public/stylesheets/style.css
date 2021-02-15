@@ -246,6 +246,7 @@ li {
 .genre-btn {
   width: 90%;
   background-color: #e2dfff;
+  text-align: left;
 }
 
 .impression-area {

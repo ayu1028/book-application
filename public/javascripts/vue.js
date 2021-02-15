@@ -23,16 +23,6 @@
   `
 });
 
-Vue.component('book-item', {
-  props: ['items'],
-  template: `
-  <a v-bind:href="'/update/' + items.id" class="image-box-large white-background">
-  <p>{{ items.book.book_name }}</p>
-  <img class="book-image-large" v-bind:src="items.book.book_path">
-</a>
-  `
-})
-
 var app = new Vue({
   el:'#app',
   data:{
@@ -63,3 +53,4 @@ var app = new Vue({
     }
   }
 });
+
