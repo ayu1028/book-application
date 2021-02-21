@@ -8,6 +8,7 @@
     <script src="https://kit.fontawesome.com/f408a441a0.js" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="https://unpkg.com/vuejs-paginate@2.1.0"></script>
   </head>
   <body>
     <div class="container">
@@ -74,19 +75,22 @@
             <% } %>
           </div>
           <div class="contents-container">
-            <h2>読んだ本：{{ selected }}</h2>
+            <span class="title">読んだ本：{{ selected }}</span>
+            <div class="pagenate-box">
+              <paginate
+              :page-count="getPageCount"
+              :click-handler="clickCallback"
+              :prev-text="'＜Prev'"
+              :next-text="'Next＞'"
+              :container-class="'pagenation'"
+            ></paginate>
+            </div>
             <div class="bookshelf-large">
               <book-item
-                v-for="item in impressions"
+                v-for="item in slicedImpressions"
                 v-bind:items="item"
                 v-bind:key="item.id"
               ></book-item>
-<!--              <% for(let i in contents) { %>
-                <a href="/update/<%= contents[i].id %>" class="image-box-large white-background">
-                  <p><%= contents[i].book.book_name %></p>
-                  <img class="book-image-large" src="<%= contents[i].book.book_path %>">
-                </a>
-              <% } %>-->
             </div>
           </div>
         </div>

@@ -254,6 +254,32 @@ li {
   width: 90%;
 }
 
+.pagenate-box {
+  display: inline-block;
+  margin-top: 10px;
+  margin-left: 10px;
+}
+
+.pagenation {
+  display: flex;
+}
+
+.pagenation a {
+  display: block;
+  border: 1px solid black;
+  border-radius: 3px;
+  margin: 0;
+  padding: 5px 10px;
+}
+
+.pagenation .active {
+  background-color: cornflowerblue;
+}
+
+.title {
+  font-size: 15px;
+}
+
 @media screen and (min-width: 781px) {
   .main-container {
     margin: auto;

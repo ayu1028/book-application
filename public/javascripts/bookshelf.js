@@ -1,3 +1,4 @@
+Vue.component('paginate', VuejsPaginate);
 Vue.component('book-item', {
   props: ['items'],
   template: `
@@ -12,10 +13,24 @@ var app = new Vue({
   el:'#bookshelf',
   data:{
     impressions: [],
-    selected:'すべて'
+    selected:'すべて',
+    parPage: 9,
+    currentPage: 1
   },
   mounted: function() {
     this.impressionsAll(this.selected);
+  },
+  computed: {
+    slicedImpressions: function() {
+      const originalData = this.impressions;
+      const current = this.currentPage * this.parPage;
+      const start = current - this.parPage;
+      const slicedData = originalData.slice(start, current);
+      return slicedData;
+    },
+    getPageCount: function() {
+      return Math.ceil(this.impressions.length / this.parPage);
+    }
   },
   methods: {
     impressionsAll: async function(genre) {
@@ -25,6 +40,10 @@ var app = new Vue({
       });
       this.impressions = search.data;
       this.selected = $genre;
+      this.currentPage = 1;
+    },
+    clickCallback: function(pageNum) {
+      this.currentPage = Number(pageNum);
     }
   }
 });
