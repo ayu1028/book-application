@@ -31,7 +31,6 @@
       <div id="bookshelf" class="contents">
         <div class="main-container">
           <div class="side-container">
-            <p>Welcome!</p>
             <% if(typeof user !== 'undefined') { %>
               <!--ログイン後に表示する-->
               <a href="/users/<%= user.id %>" class="white-background user-info-box">
@@ -97,7 +96,7 @@
       </div>
       <footer>
         <p>
-          <a href="#">Ayumi Yamamori</a> all rights reserved
+          This app's source code is <a href="https://github.com/ayu1028/book-application" target="_blank" rel="noopener noreferrer">Here <i class="fab fa-github"></i></a>
         </p>
       </footer>
     </div>

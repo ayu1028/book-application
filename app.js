@@ -1,6 +1,7 @@
 //Start Application : DEBUG=book-application:* npm run devstart
 var createError = require('http-errors');
 var express = require('express');
+var engine = require('ejs-locals');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
@@ -23,6 +24,7 @@ const setUser = require('./setUser');
 var app = express();
 
 // view engine setup
+app.engine('ejs', engine);
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
 
