@@ -2,6 +2,7 @@
 
 ## - The Booksの説明 -
 これは、本の感想を共有するためのアプリケーションです。
+　→　リンク：https://the-books-application.herokuapp.com/
 
 ## バックエンド使用言語 ／ フレームワーク
 - Node.js / Express
