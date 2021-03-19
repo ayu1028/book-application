@@ -5,7 +5,7 @@ const Op = db.Sequelize.Op;
 
 router.get('/:user_id/', async (req, res, next) => {
   const userId = req.params.user_id;
-  if(userId != req.session.user_id) {
+  if (userId != req.session.user_id) {
     res.redirect('/');
   }
   const whereForm = req.query.genre ? 
@@ -28,7 +28,7 @@ router.get('/:user_id/', async (req, res, next) => {
 router.post('/search', async (req, res, next) => {
   const userId = req.session.user_id;
   const formSelector = (genre) => {
-    if(genre =='すべて') {
+    if(genre === 'すべて') {
       return {user_id: userId};
     } else {
       return {[Op.and]: [{user_id: userId}, {genre: req.body.genre}]};

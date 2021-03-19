@@ -16,7 +16,7 @@ router.post('/', async (req, res, next) => {
       email: email
     }
   });
-  if(findUser) {
+  if (findUser) {
     const passwordHash = findUser.password;
     if(bcrypt.compareSync(password, passwordHash)) {
       req.session.user_id = findUser.id;
@@ -42,7 +42,7 @@ router.get('/easy', async (req, res, next) => {
     }
   });
   const passwordHash = findUser.password;
-  if(bcrypt.compareSync(password, passwordHash)) {
+  if (bcrypt.compareSync(password, passwordHash)) {
     req.session.user_id = findUser.id;
     res.redirect('/');
   } else {

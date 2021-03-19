@@ -14,7 +14,7 @@ router.get('/:impression_id', async (req, res, next) => {
         { model: db.book, required: true }
       ]
     });
-    if(impression) {
+    if (impression) {
       res.render('impression_update', {
         title: 'The Books',
         contents: impression
@@ -42,7 +42,7 @@ router.post('/:impression_id', async (req, res, next) => {
     const whereForm = {where: {id: impId}};
     const impression = await db.impression.update(updateForm, whereForm);
     res.redirect(`/users/${userId}`);
-  } catch(err) {
+  } catch (err) {
     res.redirect(`/update/${impId}`);
   }
 });
