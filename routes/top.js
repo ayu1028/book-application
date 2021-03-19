@@ -9,7 +9,7 @@ router.get('/', async (req, res, next) => {
 
 router.post('/search', async (req, res, next) => {
 	const formSelector = (genre) => {
-		if(genre == 'すべて') {
+		if (genre === 'すべて') {
 			return {visible: 1};
 		} else {
 			return {[Op.and]: [{genre: req.body.genre},{visible: 1}]};

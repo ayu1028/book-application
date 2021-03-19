@@ -3,13 +3,13 @@ const Op = db.Sequelize.Op;
 
 module.exports = async (req, res, next) => {
 	const userId = req.session.user_id;
-	if(userId){
+	if (userId) {
 		const loginUser = await db.user.findOne({
 			where: {
 				id: userId
 			}
 		});
-		if(loginUser) {
+		if (loginUser) {
 			const countNumber = await db.impression.findAll({
 				attributes: [
 					'genre',
@@ -23,7 +23,7 @@ module.exports = async (req, res, next) => {
 			res.locals.user = loginUser;
 
 			let totalNumber = 0;
-			for(let i in countNumber) {
+			for (let i in countNumber) {
 				totalNumber = totalNumber + countNumber[i].dataValues.n_genre;
 			};
 			

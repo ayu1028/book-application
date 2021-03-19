@@ -56,7 +56,7 @@ router.post('/', upload.single('book_img'), (req, res, next) => {
 			const impression = await db.impression.create(impForm, {transaction: trn});
 			await trn.commit();
 			res.redirect('/');
-		} catch(err) {
+		} catch (err) {
 			await trn.rollback();
 			console.log(err);
 			res.render('post', {

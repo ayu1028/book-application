@@ -22,7 +22,7 @@ router.post('/', async (req, res, next) => {
     }
   });
   const userExists = findUser.length;
-  if(userExists) {
+  if (userExists) {
     res.render('register', {
       userExists: 'ユーザー名／メールアドレスは既に使われています。'
     });
@@ -40,7 +40,7 @@ router.post('/', async (req, res, next) => {
       const createUser = await db.user.create(userForm, { transaction: trn });
       await trn.commit();
       res.redirect('/login');
-    } catch(err) {
+    } catch (err) {
       await trn.rollback();
       res.render('register', {
         err: err.errors
